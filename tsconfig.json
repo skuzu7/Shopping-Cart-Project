@@ -11,6 +11,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "noUnusedLocals": false,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
@@ -22,8 +23,7 @@
   "exclude": ["node_modules"],
   "eslintConfig": {
     "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended"
+      "@rocketseat/eslint-config/react"
     ],
     "plugins": [
       "react"
@@ -37,7 +37,5 @@
       }
     }
   },
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  }
+
 }
