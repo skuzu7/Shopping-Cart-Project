@@ -1,21 +1,36 @@
 {
-  "env": {
-    "browser": true,
-    "node": true,
-    "es2021": true
-  },
-  "extends": [
-    "@rocketseat/eslint-config/react"                                                     
-
-  ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": 2021,
-    "sourceType": "module",
-    "project": "./tsconfig.json"
-  },
-  "plugins": ["@typescript-eslint", "react"],
-  "rules": {
-    // Additional rules or rule overrides can be added here
-  }
+    "root": true,
+    "extends": [
+        "@rocketseat/eslint-config/react",
+        "plugin:@next/next/recommended"
+        
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "./tsconfig.json",
+        
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "@typescript-eslint/strict-boolean-expressions": [
+            2,
+            {
+                "allowString": false,
+                "allowNumber": false
+            }
+        ]
+    },
+    "settings": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true
+        },
+        "eslint.validate": [
+            "javascript",
+            "typescript"
+        ]
+    },
+    "ignorePatterns": ["src/**/*.test.ts", "src/frontend/generated/*"]
 }

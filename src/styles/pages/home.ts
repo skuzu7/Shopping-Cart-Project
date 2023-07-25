@@ -1,17 +1,19 @@
-import { styled } from "..";
+import Link from 'next/link'
+import { styled } from '..'
 
 export const HomeContainer = styled('main', {
   display: 'flex',
   maxWidth: 1200,
+})
 
-
-});
+export const LinkWithoutUnderline = styled(Link, {
+  textDecoration: 'none',
+})
 
 export const Product = styled('div', {
   background: 'linear-gradient(180deg, #1EA483 0%, #7465D4 100%)',
   display: 'flex',
   flexDirection: 'column',
-
 
   footer: {
     background: 'rgba(32, 32, 36, 0.9)',
@@ -20,11 +22,13 @@ export const Product = styled('div', {
     justifyContent: 'space-between',
 
     padding: '32px',
-
-
     opacity: 0,
-    transition: 'opacity 0.3s ease',
 
+    transition: 'opacity 0.3s ease',
+  },
+
+  span: {
+    color: '$text',
   },
 
   strong: {
@@ -36,4 +40,4 @@ export const Product = styled('div', {
       opacity: 1,
     },
   },
-});
+})
