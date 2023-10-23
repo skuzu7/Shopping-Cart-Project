@@ -1,76 +1,81 @@
-# Next.js Shopping Cart Project
 
-This is a Next.js project bootstrapped with `create-next-app`.
+# Projeto Carrinho de Compras com Next.js 
 
-## Description
+Este é um projeto Next.js inicializado com `create-next-app`.
 
-The Next.js Shopping Cart project is a simple e-commerce web application that allows users to browse and purchase products online. The application uses Next.js, a popular React framework for building server-side-rendered (SSR) and static websites. It leverages the Stripe API for handling payment processing, and Swiper for creating a responsive product carousel.
+## Descrição
+O projeto Carrinho de Compras com Next.js é uma aplicação web simples de e-commerce que permite aos usuários navegar e comprar produtos online. A aplicação utiliza o Next.js, um popular framework do React para construção de websites renderizados no servidor (SSR) e websites estáticos. Ele utiliza a API do Stripe para processamento de pagamentos e o Swiper para criar um carrossel de produtos responsivo.
 
-## Getting Started
+## Começando
+Para executar o projeto localmente, siga estes passos:
 
-To run the project locally, follow these steps:
+1. Clone este repositório para sua máquina local.
+2. Navegue até o diretório do projeto no seu terminal.
+3. Instale as dependências usando o gerenciador de pacotes de sua preferência (`npm`, `yarn` ou `pnpm`):
 
-1. Clone this repository to your local machine.
-2. Navigate to the project directory in your terminal.
-3. Install the dependencies using the package manager of your choice (npm, yarn, or pnpm):
-   ```bash
-   npm install
-   # or
-   yarn install
-   # or
-   pnpm install
+```bash
+npm install
+# ou
+yarn install
+# ou
+pnpm install
+```
 
-   
+```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
+# ou
 pnpm dev
+```
 
+4. Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
 
-Open http://localhost:3000 with your browser to see the result.
+## Rotas da API 
 
-You can start editing the page by modifying pages/index.tsx. The page auto-updates as you edit the file.
+As rotas da API podem ser acessadas em [http://localhost:3000/api](http://localhost:3000/api).
 
-API Routes
-API routes can be accessed on http://localhost:3000/api
+O diretório `pages/api` é mapeado para `/api/*`. Arquivos neste diretório são tratados como rotas da API ao invés de páginas React.
 
-The pages/api directory is mapped to /api/*. Files in this directory are treated as API routes instead of React pages.
+## Otimização de Fontes 
 
-Font Optimization
-This project uses next/font to automatically optimize and load Inter, a custom Google Font.
+Este projeto utiliza `next/font` para otimizar e carregar automaticamente a fonte Inter, uma fonte customizada do Google.
 
-Project Description
-The project consists of a React application with a shopping cart manager using the Context API. It allows users to add items to the cart, remove items from the cart, and view the total price of the added items. The cart manager is implemented through a CartProvider component, which provides a context for other application components to access and interact with the cart.
+## Descrição do Projeto 
 
-Additionally, the application includes an integration with the Stripe API to process payments, using a Next.js API to create checkout sessions. This makes it possible to securely and efficiently handle payments when users finalize their purchases in the cart.
+O projeto consiste em uma aplicação React com um gerenciador de carrinho de compras usando a Context API. Permite aos usuários adicionar itens ao carrinho, remover itens e ver o preço total dos itens adicionados. A gestão do carrinho é implementada através do componente `CartProvider`, que fornece um contexto para outros componentes da aplicação acessarem e interagirem com o carrinho.
 
-The project provides a complete and functional solution for shopping cart management and payment processing in a React-based web application.
-Open http://localhost:3000 in your browser to access the application.
-Features
-View a list of available products with their names, images, and prices.
-Add products to the shopping cart.
-Remove products from the shopping cart.
-View the total price of items in the cart.
-Checkout and process payments using the Stripe API.
-Responsive design for a seamless user experience on different devices.
-Tech Stack
-React: A JavaScript library for building user interfaces.
-Next.js: A React framework for server-side rendering and static site generation.
-Swiper: A modern carousel library for displaying product images.
-Stripe API: A payment processing API for secure and efficient transactions.
-Axios: A promise-based HTTP client for making API requests.
-Bootstrap: A popular CSS framework for responsive web design.
-Project Structure
-pages/index.tsx: The homepage of the application, displaying the product carousel and cart.
-components: Contains reusable React components used in the application.
-styles: Includes styling files using CSS-in-JS with styled-components.
+## Recursos 
 
-How to Use
-Clone the repository.
-Run the development server using npm run dev, yarn dev, or pnpm dev.
-Open http://localhost:3000 in your browser to see the application.
-Start adding items to the cart and explore the features of the application.
-Feel free to contribute to the project or use it as a starting point for your own applications.
+- Visualizar uma lista de produtos disponíveis com seus nomes, imagens e preços.
+- Adicionar produtos ao carrinho.
+- Remover produtos do carrinho.
+- Ver o preço total dos itens no carrinho.
+- Finalizar a compra e processar pagamentos usando a API do Stripe.
+- Design responsivo para uma experiência de usuário perfeita em diferentes dispositivos.
 
-Happy shopping!
+## Stack Tecnológico 
+
+- **React**: Uma biblioteca JavaScript para construir interfaces de usuário.
+- **Next.js**: Um framework React para renderização do lado do servidor e geração de sites estáticos.
+- **Swiper**: Uma biblioteca moderna de carrossel para exibir imagens de produtos.
+- **Stripe API**: Uma API de processamento de pagamentos para transações seguras e eficientes.
+- **Axios**: Um cliente HTTP baseado em promessas para fazer solicitações de API.
+- **Bootstrap**: Um popular framework CSS para design responsivo.
+
+## Estrutura do Projeto 
+
+- `pages/index.tsx`: A página inicial da aplicação, exibindo o carrossel de produtos e o carrinho.
+- `components`: Contém componentes React reutilizáveis utilizados na aplicação.
+- `styles`: Inclui arquivos de estilo usando CSS-in-JS com styled-components.
+
+## Como usar 
+
+1. Clone o repositório.
+2. Execute o servidor de desenvolvimento usando `npm run dev`, `yarn dev`, ou `pnpm dev`.
+3. Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver a aplicação.
+4. Comece a adicionar itens ao carrinho e explore os recursos da aplicação.
+
+---
+
+Espero que isso atenda às suas necessidades!
