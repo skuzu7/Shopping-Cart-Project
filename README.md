@@ -10,7 +10,7 @@ Projeto de e-commerce simples com Next.js. Utiliza Next.js para SSR, API do Stri
 
 **1.** Clone o repositório:
 ```bash
-git clone [link-do-repositório]
+git clone https://github.com/skuzu7/Shopping-Cart-Project.git
 ```
 📋 **Copiar comando**
 
