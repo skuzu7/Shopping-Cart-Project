@@ -1,57 +1,50 @@
-Entendido! Vou simplificar a descrição e adicionar ícones junto com os comandos para copiar:
+# Shopping Cart
 
----
+An e-commerce storefront built with Next.js 13, featuring a product carousel, shopping cart, and Stripe-powered checkout.
 
-# 🛒 Projeto Carrinho de Compras com Next.js 
+## Features
 
-Projeto de e-commerce simples com Next.js. Utiliza Next.js para SSR, API do Stripe para pagamentos e Swiper para um carrossel responsivo.
+- Product listing with a Swiper carousel
+- Shopping cart state managed via `use-shopping-cart`
+- Checkout flow integrated with the Stripe API
+- Styled with Bootstrap and styled-components
 
-## 🛠️ Configuração
+## Tech stack
 
-**1.** Clone o repositório:
+- **Next.js 13** — React framework with SSR/SSG
+- **TypeScript**
+- **Stripe** — payment processing (`@stripe/stripe-js`, `stripe`)
+- **Swiper** — product carousel
+- **Bootstrap 5** + **react-bootstrap** — responsive layout
+- **styled-components** + **@stitches/react** — component styling
+- **axios** — HTTP client
+
+## Getting started
+
 ```bash
 git clone https://github.com/skuzu7/Shopping-Cart-Project.git
-```
-📋 **Copiar comando**
-
-**2.** Entre no diretório:
-```bash
-cd nome-do-diretório
-```
-📋 **Copiar comando**
-
-**3.** Instale as dependências:
-```bash
+cd Shopping-Cart-Project
 npm install
 ```
-📋 **Copiar comando**
 
-**4.** Execute o projeto:
+Create a `.env.local` file and set your Stripe keys:
+
+```
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_...
+STRIPE_SECRET_KEY=sk_...
+```
+
 ```bash
 npm run dev
 ```
-📋 **Copiar comando**
 
-Acesse [http://localhost:3000](http://localhost:3000) para ver o resultado.
+Open [http://localhost:3000](http://localhost:3000).
 
-## 🚀 Recursos
+## Project structure
 
-- 🛍️ Adicione/Remova produtos do carrinho.
-- 💳 Finalize compras com Stripe.
-- 📱 Design responsivo.
-
-## 📚 Stack Tecnológico
-
-- **React**: Construção de UI.
-- **Next.js**: SSR e sites estáticos.
-- **Stripe API**: Pagamentos.
-- **Swiper**: Carrossel de produtos.
-- **Bootstrap**: Design responsivo.
-
-## 🖥️ Uso
-
-Após a configuração, acesse [http://localhost:3000](http://localhost:3000) e explore a aplicação.
-
----
-
-Espero que esta versão simplificada e estilizada seja o que você estava procurando!
+```
+src/
+├── pages/       # Next.js pages and API routes
+├── components/  # React components
+└── styles/      # Global styles
+```
