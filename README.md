@@ -1,5 +1,9 @@
 # Shopping Cart
 
+[![CI & Build](https://github.com/skuzu7/Shopping-Cart-Project/actions/workflows/ci.yml/badge.svg)](https://github.com/skuzu7/Shopping-Cart-Project/actions/workflows/ci.yml)
+[![Security Policy](https://img.shields.io/badge/Security-Policy_Active-blue.svg)](SECURITY.md)
+[![Security Architecture](https://img.shields.io/badge/Security-Architecture_Documented-success.svg)](docs/SECURITY_ARCHITECTURE.md)
+
 An e-commerce storefront built with Next.js 15, featuring a product carousel,
 shopping cart, and Stripe-powered checkout.
 
@@ -49,6 +53,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Security
 
+- **Security Architecture:** See [`docs/SECURITY_ARCHITECTURE.md`](docs/SECURITY_ARCHITECTURE.md) for server-side secret isolation and payment boundary details.
 - Stripe secret keys are read only from server-side environment variables.
 - `.env` files are ignored; `.env.example` contains placeholders only.
 - Report suspected credential exposure through GitHub's private vulnerability
