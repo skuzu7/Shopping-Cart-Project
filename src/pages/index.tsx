@@ -1,7 +1,7 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/swiper-bundle.min.css'
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
+import 'swiper/css/bundle'
+import { A11y, Navigation, Pagination, Scrollbar } from 'swiper/modules'
 import {
   HomeContainer,
   LinkWithoutUnderline,
@@ -10,8 +10,7 @@ import {
 import Image from 'next/image'
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
+import { stripeAuthorizationHeader } from '@/lib/stripe'
 
 interface Product {
   id: string
@@ -36,6 +35,7 @@ export default function Home({ products }: HomeProps) {
   return (
     <HomeContainer>
       <Swiper
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={20}
         slidesPerView={2}
         navigation
@@ -70,10 +70,7 @@ export default function Home({ products }: HomeProps) {
 export async function getServerSideProps(): Promise<{ props: HomeProps }> {
   try {
     const response = await axios.get('https://api.stripe.com/v1/products', {
-      headers: {
-        Authorization:
-          'Bearer sk_test_REDACTED_FOR_SECURITY',
-      },
+      headers: stripeAuthorizationHeader(),
     })
 
     const products: Product[] = await Promise.all(
@@ -81,10 +78,7 @@ export async function getServerSideProps(): Promise<{ props: HomeProps }> {
         const priceResponse = await axios.get(
           `https://api.stripe.com/v1/prices/${product.default_price}`,
           {
-            headers: {
-              Authorization:
-                'Bearer sk_test_REDACTED_FOR_SECURITY',
-            },
+            headers: stripeAuthorizationHeader(),
           },
         )
         const priceData = priceResponse.data

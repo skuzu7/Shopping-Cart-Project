@@ -9,6 +9,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { CartProvider, useCart } from '@/context/CartContext'
 import Cart from '../Cart'
+import { stripeAuthorizationHeader } from '@/lib/stripe'
 
 interface Product {
   id: string
@@ -78,10 +79,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
     const response = await axios.get(
       `https://api.stripe.com/v1/products/${params.id}?expand[]=default_price`,
       {
-        headers: {
-          Authorization:
-            'Bearer sk_test_REDACTED_FOR_SECURITY',
-        },
+        headers: stripeAuthorizationHeader(),
       },
     )
 
@@ -105,10 +103,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
 export async function getStaticPaths() {
   try {
     const response = await axios.get('https://api.stripe.com/v1/products', {
-      headers: {
-        Authorization:
-          'Bearer sk_test_REDACTED_FOR_SECURITY',
-      },
+      headers: stripeAuthorizationHeader(),
     })
 
     const products = response.data.data

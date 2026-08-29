@@ -1,12 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import Stripe from 'stripe'
-
-const stripe = new Stripe(
-  'sk_test_REDACTED_FOR_SECURITY',
-  {
-    apiVersion: '2022-11-15', // Optional: Specify the API version to use (you can use the latest version)
-  },
-)
+import stripe from '@/lib/stripe'
 
 interface ItemData {
   priceId: string

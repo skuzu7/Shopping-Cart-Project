@@ -3,6 +3,7 @@ import axios from 'axios'
 import { GetServerSideProps } from 'next'
 import Link from 'next/link'
 import Image from 'next/image' // Importe o componente Image corretamente
+import { stripeAuthorizationHeader } from '@/lib/stripe'
 
 interface SuccessProps {
   name: string
@@ -31,10 +32,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     const response = await axios.get(
       `https://api.stripe.com/v1/checkout/sessions/${sessionId}?expand[]=line_items`,
       {
-        headers: {
-          Authorization:
-            'Bearer sk_test_REDACTED_FOR_SECURITY',
-        },
+        headers: stripeAuthorizationHeader(),
       },
     )
 
@@ -50,10 +48,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     const productResponse = await axios.get(
       `https://api.stripe.com/v1/products/${productId}`,
       {
-        headers: {
-          Authorization:
-            'Bearer sk_test_REDACTED_FOR_SECURITY',
-        },
+        headers: stripeAuthorizationHeader(),
       },
     )
     const productData = productResponse.data
