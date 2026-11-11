@@ -1,6 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import stripe from '@/lib/stripe'
-import { parseAllowedPrices, parseCheckoutItems } from '@/lib/checkoutValidation'
+import {
+  parseAllowedPrices,
+  parseCheckoutItems,
+} from '@/lib/checkoutValidation'
 
 export default async function handler(
   req: NextApiRequest,
@@ -14,7 +17,9 @@ export default async function handler(
   // Fail closed until the merchant configures eligible prices server-side.
   const allowedPrices = parseAllowedPrices(process.env.STRIPE_ALLOWED_PRICE_IDS)
   if (allowedPrices.size === 0) {
-    return res.status(503).json({ error: 'Checkout price catalog is not configured' })
+    return res
+      .status(503)
+      .json({ error: 'Checkout price catalog is not configured' })
   }
   const lineItems = parseCheckoutItems(req.body, allowedPrices)
   if (!lineItems) {
