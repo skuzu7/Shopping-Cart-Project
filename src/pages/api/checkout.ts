@@ -1,43 +1,35 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import stripe from '@/lib/stripe'
-
-interface ItemData {
-  priceId: string
-}
-
-interface RequestBody {
-  itemsData: ItemData[]
-}
-
-interface ApiResponse {
-  sessionId: string
-}
+import { parseAllowedPrices, parseCheckoutItems } from '@/lib/checkoutValidation'
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
   if (req.method !== 'POST') {
-    return res.status(405).end() // Método HTTP não permitido
+    return res.status(405).end()
   }
 
-  const { itemsData }: RequestBody = req.body // Recebe os dados dos itens do carrinho do corpo da solicitação
-  console.log(itemsData)
+  // A client must never choose an arbitrary Stripe Price ID.
+  // Fail closed until the merchant configures eligible prices server-side.
+  const allowedPrices = parseAllowedPrices(process.env.STRIPE_ALLOWED_PRICE_IDS)
+  if (allowedPrices.size === 0) {
+    return res.status(503).json({ error: 'Checkout price catalog is not configured' })
+  }
+  const lineItems = parseCheckoutItems(req.body, allowedPrices)
+  if (!lineItems) {
+    return res.status(400).json({ error: 'Invalid checkout items' })
+  }
 
   try {
-    // Crie a sessão de checkout no Stripe usando os itemsData
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
-      line_items: itemsData.map((item) => ({
-        price: item.priceId,
-        quantity: 1,
-      })),
+      line_items: lineItems,
       success_url:
         'http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: 'http://localhost:8080/cancel',
     })
-
-    res.status(200).json({ sessionId: session.url })
+    return res.status(200).json({ sessionId: session.url })
   } catch (error) {
     console.error('Error creating checkout session:', error)
     return res.status(500).json({ error: 'Internal Server Error' })
