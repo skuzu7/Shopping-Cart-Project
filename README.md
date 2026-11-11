@@ -42,6 +42,16 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_...
 STRIPE_SECRET_KEY=sk_...
 ```
 
+Configure `STRIPE_ALLOWED_PRICE_IDS` in `.env.local` with a comma-separated list of the exact **test-mode Price IDs** permitted for this storefront. Without it, checkout responds with HTTP 503 rather than trusting client-selected prices. Do not populate it with live IDs during development.
+
+For the validation unit tests (Node 22.16+):
+
+```bash
+node --experimental-strip-types --test tests/checkoutValidation.test.mjs
+```
+
+The example checkout still uses localhost success/cancel URLs; those URLs must be configured securely before a real deployment. This is a legacy learning project, not a production payments system.
+
 Use restricted Stripe test keys for local development. Never commit live or
 test secret keys; rotate any key that has been exposed in source history.
 
